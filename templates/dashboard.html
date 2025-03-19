@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Dashboard</title>
+    <meta http-equiv="refresh" content="10" />
+    <!-- Auto-refresh every 10 sec -->
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f4f4f4;
+      }
+      h1 {
+        color: #333;
+      }
+      table {
+        width: 60%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        background: white;
+      }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: left;
+      }
+      th {
+        background: #007bff;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+      input,
+      button {
+        padding: 8px;
+        margin: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📋 Attendance Dashboard</h1>
+
+    <!-- Date Filter Form -->
+    <form method="get">
+      <label for="date">Select Date:</label>
+      <input type="date" id="date" name="date" value="{{ selected_date }}" />
+      <button type="submit">Filter</button>
+    </form>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Time</th>
+      </tr>
+      {% for attendee in attendees %}
+      <tr>
+        <td>{{ attendee.Name }}</td>
+        <td>{{ attendee.Time }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
